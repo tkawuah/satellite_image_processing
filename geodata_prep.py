@@ -1,4 +1,5 @@
 from sklearn.model_selection import train_test_split
+from sklearn import preprocessing
 from osgeo import gdal, ogr, gdal_array
 import matplotlib.pyplot as plt
 import numpy as np
@@ -34,6 +35,7 @@ def rasterize(raster_ext, shp, attrib = 'C_ID'):
 
 
 def img_to_arr(input_file, dim_ordering = 'channels_last', dtype = 'float32'):
+    """Takes in a raster file as input and converts to numpy array"""
     bands = [input_file.GetRasterBand(i) for i in range(1, input_file.RasterCount + 1)]
     arr = np.array([gdal_array.BandReadAsArray(band) for band in bands]).astype(dtype)
     if dim_ordering == 'channels_last':
@@ -57,9 +59,12 @@ y_img_arr = y_img_arr.reshape(-1)
 print(x_img_arr.shape, 'and ', y_img_arr.shape) 
 #
 
+#standardize data 
+x_img_arr_scaled = preprocessing.scale(x_img_arr)
+
 #extract labeled pixels from both datasets... i.e. image (img) and reference (lab)
 indices = np.where(y_img_arr>0)
-all_data_img = x_img_arr[indices]
+all_data_img = x_img_arr_scaled[indices]
 all_data_lab = y_img_arr[indices]-1
 
 
