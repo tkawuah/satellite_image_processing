@@ -1,22 +1,36 @@
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import VotingClassifier
+from sklearn.neural_network import MLPClassifier
+from sklearn import tree
+from sklearn import svm
 from sklearn.metrics import classification_report, confusion_matrix
 import numpy as np
 import matplotlib.pyplot as plt
 
 
-#create model 
-RF = RandomForestClassifier(
-    bootstrap = True,
-    max_depth = 70,
-    max_features = 'auto',
-    min_samples_leaf = 4,
-    min_samples_split = 10,
-    n_estimators = 400)
+#create models 
+RF = RandomForestClassifier()
+
+SVM = svm.SVC(gamma = 'scale')
+
+CART = tree.DecisionTreeClassifier()
+
+MLP = MLPClassifier()
+
+ECLF = VotingClassifier(estimators = [('rf', RF), ('svm', SVM), ('cart', CART), ('mlp', MLP)], voting = 'hard') #ensemble classifier
 
 
 #fit model 
 RF.fit(train_img, train_lab)
 print('model fit done...', RF.score(train_img, train_lab))
+
+SVM.fit(train_img, train_lab)
+
+CART.fit(train_img, train_lab)
+
+MLP.fit(train_img, train_lab)
+
+ECLF.fit(train_img, train_lab)
 
 
 #feat_labels = ['B02M','B03M','B04M','B08M','B02J','B03J','B04J','B08J',
@@ -37,6 +51,14 @@ print('model fit done...', RF.score(train_img, train_lab))
 #model prediction
 rf_pred = RF.predict(test_img)
 #rf_map = rf_map.reshape(133,102)
+
+svm_pred = SVM.predict(test_img)
+
+cart_pred = CART.predict(test_img)
+
+mlp_pred = MLP.predict(test_img)
+
+eclf_pred = ECLF.predict(test_img)
 
 
 #print prediction accuracy measures 
