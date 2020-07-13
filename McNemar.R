@@ -1,0 +1,21 @@
+rf_mlp<- read.csv("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/RF_vs_MLP.csv")
+rf_cart<- read.csv("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/RF_vs_CART.csv")
+rf_svm<- read.csv("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/RF_vs_SVM.csv")
+mlp_cart<- read.csv("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/MLP_vs_CART.csv")
+mlp_svm<- read.csv("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/MLP_vs_SVM.csv")
+cart_svm<- read.csv("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/CART_vs_SVM.csv")
+
+
+rf_mlp_tab<-xtabs(data=rf_mlp)
+rf_cart_tab<-xtabs(data=rf_cart)
+rf_svm_tab<-xtabs(data=rf_svm)
+mlp_cart_tab<-xtabs(data=mlp_cart)
+mlp_svm_tab<-xtabs(data=mlp_svm)
+cart_svm_tab<-xtabs(data=cart_svm)
+
+rf_mlp.result<-mcnemar.test(rf_mlp_tab)
+rf_cart.result<-mcnemar.test(rf_cart_tab)
+rf_svm.result<-mcnemar.test(rf_svm_tab)
+mlp_cart.result<-mcnemar.test(mlp_cart_tab)
+mlp_svm.result<-mcnemar.test(mlp_svm_tab)
+cart_svm.result<-mcnemar.test(cart_svm_tab)
