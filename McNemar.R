@@ -1,9 +1,9 @@
-rf_mlp<- read.csv("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/RF_vs_MLP.csv")
-rf_cart<- read.csv("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/RF_vs_CART.csv")
-rf_svm<- read.csv("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/RF_vs_SVM.csv")
-mlp_cart<- read.csv("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/MLP_vs_CART.csv")
-mlp_svm<- read.csv("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/MLP_vs_SVM.csv")
-cart_svm<- read.csv("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/CART_vs_SVM.csv")
+rf_mlp<- read.csv("*/RF_vs_MLP.csv")
+rf_cart<- read.csv("*/RF_vs_CART.csv")
+rf_svm<- read.csv("*/RF_vs_SVM.csv")
+mlp_cart<- read.csv("*/MLP_vs_CART.csv")
+mlp_svm<- read.csv("*/MLP_vs_SVM.csv")
+cart_svm<- read.csv("*/CART_vs_SVM.csv")
 
 
 rf_mlp_tab<-xtabs(data=rf_mlp)
