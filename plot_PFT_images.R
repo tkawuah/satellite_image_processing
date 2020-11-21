@@ -13,16 +13,16 @@ library(cowplot)
 library(ggpubr)
 
 #import images
-evgrn <- brick("D:/studies/phd/fieldwork_photos/evergreen/IMG_1756.jpg", 
+evgrn <- brick("*/IMG_1756.jpg", 
                package="raster")
 
-decid <- brick("D:/studies/phd/fieldwork_photos/deciduous/IMG_1949.jpg", 
+decid <- brick("*/IMG_1949.jpg", 
                  package="raster")
 
-bunch <- brick("D:/studies/phd/fieldwork_photos/bunch_grass/IMG_1615.jpg", 
+bunch <- brick("*/IMG_1615.jpg", 
                package="raster")
 
-lawn <- brick("D:/studies/phd/fieldwork_photos/grazing_lawn/IMG_2885.jpg", 
+lawn <- brick("*/IMG_2885.jpg", 
                package="raster")
 
 par(mfrow = c(2, 2)) # Create a 2 x 2 plotting matrix
