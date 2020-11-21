@@ -4,8 +4,8 @@ library(reshape)
 library(ggpubr)
 
 #VIF plots from spectral and texture indices
-spec_in <- read.csv('D:/studies/phd/WV3_Data_JULY2019/010039360030_01/L_Sabie_subset/spectral_Indices_vif.csv')
-text_in <- read.csv('D:/studies/phd/WV3_Data_JULY2019/010039360030_01/L_Sabie_subset/texture_indices_vif.csv')
+spec_in <- read.csv('*/spectral_Indices_vif.csv')
+text_in <- read.csv('*/texture_indices_vif.csv')
 
 s<- ggplot(spec_in, aes(x = reorder(variable, -vif), y = vif))+ geom_bar(stat = 'identity')+
   labs(x = 'Spectral indices', y = 'Variance Inflation Factor(VIF)') + theme_bw()+
@@ -20,7 +20,7 @@ t<- ggplot(text_in, aes(x = reorder(variable, -vif), y = vif))+ geom_bar(stat = 
 t
 
 #recursive feature elimination plot
-file_path <- 'D:/studies/phd/WV3_Data_JULY2019/010039360030_01/L_Sabie_subset/rfe_csv_selected_features_imp_scores.csv'
+file_path <- '*/rfe_csv_selected_features_imp_scores.csv'
 
 rfe_df <- read.csv(file_path)
 
@@ -40,8 +40,8 @@ patchwork<-(s+t)/p
 patchwork + plot_annotation(tag_levels = 'A')
 
 # permutation mportance plots
-file_path3<- 'D:/studies/phd/WV3_Data_JULY2019/010039360030_01/L_Sabie_subset/mlp_permImportance.csv'
-file_path4<- 'D:/studies/phd/WV3_Data_JULY2019/010039360030_01/L_Sabie_subset/rf_permImportance.csv'
+file_path3<- '*/mlp_permImportance.csv'
+file_path4<- '*/rf_permImportance.csv'
 
 mlp_df = read.csv(file_path3)
 rf_df = read.csv(file_path4)
@@ -68,7 +68,7 @@ figure
 
 
 #accuracy plot
-file_path2 <- 'D:/studies/phd/WV3_Data_JULY2019/010039360030_01/L_Sabie_subset/mlp_independent_accuracy.csv'
+file_path2 <- '*/mlp_independent_accuracy.csv'
 
 acc_df <- read.csv(file_path2)
 head(acc_df)
@@ -81,7 +81,7 @@ ggplot(acc_df.m, aes(variable, value)) +
 
 
 #... accuracy comparison plots from nested cv
-cv_file <- 'D:/studies/phd/WV3_Data_JULY2019/010039360030_01/L_Sabie_subset/nested-cv_accuracy results.csv'
+cv_file <- '*/nested-cv_accuracy results.csv'
 
 cv_score <- read.csv(cv_file)
 head(cv_score)
@@ -96,14 +96,14 @@ p
 #... grazing lawn accuracy comparison from binary classification
 
 #sabie
-bin_acc_sabi <- read.csv('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/thresholded bin maps/final_acc_metrics_accross_models.csv')
+bin_acc_sabi <- read.csv('*/final_acc_metrics_accross_models.csv')
 sab <- ggplot(bin_acc_sabi, aes(x = Algorithm, y = Score))+
   geom_bar(stat = 'identity', aes(fill = Metric), position = 'dodge')+
   scale_fill_brewer(palette = 'Set1')+
   labs(y = 'Accuracy level')
 
 #satara
-bin_acc_satara <- read.csv('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/satara/thresholded bin maps/final_acc_metrics_accross_models.csv')
+bin_acc_satara <- read.csv('*/final_acc_metrics_accross_models.csv')
 sat <- ggplot(bin_acc_satara, aes(x = Algorithm, y = Score))+
   geom_bar(stat = 'identity', aes(fill = Metric), position = 'dodge')+
   scale_fill_brewer(palette = 'Set1')+
@@ -115,7 +115,7 @@ both
 
 #... Grazing lawn and non grazing lawn area estimates
 #sabi
-area_sabi <- read.csv('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/thresholded bin maps/glawn_and_non-glawn_area_estimate.csv')
+area_sabi <- read.csv('*/glawn_and_non-glawn_area_estimate.csv')
 
 dodge <- position_dodge(width=0.9)
 
@@ -127,7 +127,7 @@ sab_area <- ggplot(area_sabi, aes(x = Algorithm, y = Area, fill = Class))+
 sab_area
 
 #satara
-area_satara <- read.csv('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/satara/thresholded bin maps/glawn_and_non-glawn_area_estimate.csv')
+area_satara <- read.csv('*/glawn_and_non-glawn_area_estimate.csv')
 sat_area <- ggplot(area_satara, aes(x = Algorithm, y = Area, fill = Class))+ 
   geom_col(position = 'dodge')+
   geom_errorbar(aes(ymin = Area - stdErr, ymax = Area + stdErr), position = dodge, width=0.25)+
@@ -154,16 +154,16 @@ library(ggpubr)
 theme_set(theme_bw()) #set plot background theme
 
 #open Sabie files
-map_rf_sabie <- raster("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/thresholded bin maps/RF_gl_binMap0.5.tif")
-map_mlp_sabie <- raster("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/thresholded bin maps/MLP_gl_binMap0.35.tif")
-map_cart_sabie <- raster("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/thresholded bin maps/CART_gl_binMap0.6.tif")
-map_svm_sabie <- raster("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/thresholded bin maps/SVM_gl_binMap0.4.tif")
+map_rf_sabie <- raster("*/RF_gl_binMap0.5.tif")
+map_mlp_sabie <- raster("*/MLP_gl_binMap0.35.tif")
+map_cart_sabie <- raster("*/CART_gl_binMap0.6.tif")
+map_svm_sabie <- raster("*/SVM_gl_binMap0.4.tif")
 
 #open Satara files
-map_rf_satara <- raster("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/satara/thresholded bin maps/RF_gl_binMap0.35.tif")
-map_mlp_satara <- raster("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/satara/thresholded bin maps/MLP_gl_binMap0.65.tif")
-map_cart_satara <- raster("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/satara/thresholded bin maps/CART_gl_binMap0.35.tif")
-map_svm_satara <- raster("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/satara/thresholded bin maps/SVM_gl_binMap0.25.tif")
+map_rf_satara <- raster("*/RF_gl_binMap0.35.tif")
+map_mlp_satara <- raster("*/MLP_gl_binMap0.65.tif")
+map_cart_satara <- raster("*/CART_gl_binMap0.35.tif")
+map_svm_satara <- raster("*/SVM_gl_binMap0.25.tif")
 
 
 #function for preparing thematic images for plotting
@@ -228,17 +228,17 @@ library(patchwork)
 theme_set(theme_bw())
 
 #sabie files
-sab_probs_rf<-raster("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/RF_gl_prob.tif")
-sab_probs_mlp<-raster("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/MLP_gl_prob.tif")
-sab_probs_cart<-raster("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/CART_gl_prob.tif")
-sab_probs_svm<-raster("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/SVM_gl_prob.tif")
+sab_probs_rf<-raster("*/sabi/RF_gl_prob.tif")
+sab_probs_mlp<-raster("*/sabi/MLP_gl_prob.tif")
+sab_probs_cart<-raster("*/sabi/CART_gl_prob.tif")
+sab_probs_svm<-raster("*/sabi/SVM_gl_prob.tif")
 
 
 #satara files
-sat_probs_rf<-raster("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/satara/RF_gl_prob_satara.tif")
-sat_probs_mlp<-raster("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/satara/MLP_gl_prob_satara.tif")
-sat_probs_cart<-raster("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/satara/CART_gl_prob_satara.tif")
-sat_probs_svm<-raster("D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/satara/SVM_gl_prob_satara.tif")
+sat_probs_rf<-raster("*/satara/RF_gl_prob_satara.tif")
+sat_probs_mlp<-raster("*/satara/MLP_gl_prob_satara.tif")
+sat_probs_cart<-raster("*/satara/CART_gl_prob_satara.tif")
+sat_probs_svm<-raster("*/satara/SVM_gl_prob_satara.tif")
 
 #sabie raster to points
 rtp_sab_probs_rf <- rasterToPoints(sab_probs_rf)
@@ -399,7 +399,7 @@ ggarrange(cart_sabie, cart_satara, mlp_sabie, mlp_satara, rf_sabie,
 
 library(ggplot2)
 
-spat_met<- read.csv('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/spatial analysis/spat_metrics_sabi.csv')
+spat_met<- read.csv('*/spat_metrics_sabi.csv')
 
 m1<- ggplot(data=spat_met, aes(x=distance, y=n.patches, group=1)) +
   geom_line(color="black", size= 1)+
@@ -419,7 +419,7 @@ m3<- ggplot(data=spat_met, aes(x=distance, y=cohesion, group=1)) +
   labs(x='', y='CI', title = 'Lower Sabie')+
   theme(axis.text = element_text(size=12),axis.title =element_text(size=12) )
 
-spat_met_sat<- read.csv('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/satara/spatial_analysis/spatial_metrics.csv')
+spat_met_sat<- read.csv('*/spatial_metrics.csv')
 
 m11<- ggplot(data=spat_met_sat, aes(x=distance, y=n.patches, group=1)) +
   geom_line(color="black", size= 1)+
@@ -448,7 +448,7 @@ sat <- lm(cohesion~distance, data = spat_met_sat)
 
 
 #...Plotting patch size (area) distribution
-psd <- read.csv('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/spatial analysis/patch_size_dist.csv')
+psd <- read.csv('*/patch_size_dist.csv')
 p1 <- ggplot(aes(y= Area, x=Landscape), data = psd)+geom_boxplot(width = 0.3, outlier.size = 0.3)+
   stat_summary(fun.y = mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..),
                linetype = "dashed")+
@@ -458,7 +458,7 @@ p1 <- ggplot(aes(y= Area, x=Landscape), data = psd)+geom_boxplot(width = 0.3, ou
 p1
 
 #...plotting summary spatial metrics for both L. Sabie and Satara landscapes
-summary_data <- read.csv('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/summary_of_spat_mets.csv')
+summary_data <- read.csv('*/summary_of_spat_mets.csv')
 
 prop<- ggplot(summary_data, aes(x = landscape, y = PROP))+ geom_bar(stat = 'identity',width = 0.3)+
   labs(x = '', y = 'Proportion of total area (%)') + theme_bw()+
