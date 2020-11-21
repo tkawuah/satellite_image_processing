@@ -17,8 +17,8 @@ wghts = eli5.format_as_dataframe(eli5.explain_weights(perm))
 wghts2 = eli5.format_as_dataframe(eli5.explain_weights(perm2))
 
 #write dataframes to csv 
-wghts.to_csv('D:/studies/phd/WV3_Data_July2019/010039360030_01/L_Sabie_subset/rf_permImportance.csv', encoding='utf-8', index=False)
-wghts2.to_csv('D:/studies/phd/WV3_Data_July2019/010039360030_01/L_Sabie_subset/mlp_permImportance.csv', encoding='utf-8', index=False)
+wghts.to_csv('*/rf_permImportance.csv', encoding='utf-8', index=False)
+wghts2.to_csv('*/mlp_permImportance.csv', encoding='utf-8', index=False)
 
 
 gLawn = mlp_map_prob[:,3]
