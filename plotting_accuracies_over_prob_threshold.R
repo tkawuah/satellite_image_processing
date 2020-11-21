@@ -3,22 +3,22 @@ library(patchwork)
 library(ggpubr)
 
 #import dataset
-cart_acc_sabie <- read.csv('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/thresholded bin maps/CART_gl_binMaps_acc_metrics.csv')
+cart_acc_sabie <- read.csv('*/CART_gl_binMaps_acc_metrics.csv')
 
-mlp_acc_sabie <- read.csv('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/thresholded bin maps/MLP_gl_binMaps_acc_metrics.csv')
+mlp_acc_sabie <- read.csv('*/MLP_gl_binMaps_acc_metrics.csv')
 
-rf_acc_sabie <- read.csv('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/thresholded bin maps/RF_gl_binMaps_acc_metrics.csv')
+rf_acc_sabie <- read.csv('*/RF_gl_binMaps_acc_metrics.csv')
 
-svm_acc_sabie <- read.csv('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/thresholded bin maps/SVM_gl_binMaps_acc_metrics.csv')
+svm_acc_sabie <- read.csv('*/SVM_gl_binMaps_acc_metrics.csv')
 
 
-cart_acc_satara <- read.csv('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/satara/thresholded bin maps/CART_gl_binMaps_acc_metrics.csv')
+cart_acc_satara <- read.csv('*/CART_gl_binMaps_acc_metrics.csv')
 
-mlp_acc_satara <- read.csv('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/satara/thresholded bin maps/MLP_gl_binMaps_acc_metrics.csv')
+mlp_acc_satara <- read.csv('*/MLP_gl_binMaps_acc_metrics.csv')
 
-rf_acc_satara <- read.csv('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/satara/thresholded bin maps/RF_gl_binMaps_acc_metrics.csv')
+rf_acc_satara <- read.csv('*/RF_gl_binMaps_acc_metrics.csv')
 
-svm_acc_satara <- read.csv('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/satara/thresholded bin maps/SVM_gl_binMaps_acc_metrics.csv')
+svm_acc_satara <- read.csv('*/SVM_gl_binMaps_acc_metrics.csv')
 
 
 #cart sabie
