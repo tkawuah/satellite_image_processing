@@ -12,34 +12,34 @@ library(patchwork)
 library(cowplot)
 
 #import data SA boundary
-ZAF <- readOGR(dsn= "C:/Users/Awuah/OneDrive/EdgeHill/datasets", layer = "gadm36_ZAF_0")
+ZAF <- readOGR(dsn= "*/datasets", layer = "gadm36_ZAF_0")
 ZAF <- st_as_sf(ZAF) # converts fom sp to sf object
 
 #import KNP boundary
-KNP <- readOGR(dsn = "C:/Users/Awuah/OneDrive/EdgeHill/datasets", layer = "my_KNP_boundary1")
+KNP <- readOGR(dsn = "*/datasets", layer = "my_KNP_boundary1")
 KNP <- st_as_sf(KNP)
 
 #import Sabie boundary
-sabie <- readOGR("D:/studies/phd/WV3_Data_JULY2019/010039360030_01/010039360030_01_P001_MUL", layer = "new_extent2")
+sabie <- readOGR("*/010039360030_01_P001_MUL", layer = "new_extent2")
 sabie <- st_as_sf(sabie)
 
 #import Satara boundary
-satara <- readOGR("D:/studies/phd/WV3_Data_JULY2019/010039360040_01/010039360040_01_P001_MUL", layer = "clip_extent")
+satara <- readOGR("*/010039360040_01_P001_MUL", layer = "clip_extent")
 satara <- st_as_sf(satara)
 
 #import water source layers
-sab_water <- readOGR('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/spatial analysis', layer = 'water_source1')
+sab_water <- readOGR('*/spatial analysis', layer = 'water_source1')
 sab_water <- st_as_sf(sab_water)
 
-sat_water <- readOGR('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/satara/spatial_analysis', layer = 'water_source1')
+sat_water <- readOGR('*/spatial_analysis', layer = 'water_source1')
 sat_water <- st_as_sf(sat_water)
 
 #import satara raster
-sat_ras <- brick("D:/studies/phd/WV3_Data_JULY2019/010039360040_01/010039360040_01_P001_MUL/satara_data_clipped.tif", 
+sat_ras <- brick("*/satara_data_clipped.tif", 
                        package="raster")
 
 #import sabie raster
-sab_ras <- brick("D:/studies/phd/WV3_Data_JULY2019/010039360030_01/010039360030_01_P001_MUL/sabi_data_cliped.tif",
+sab_ras <- brick("*/sabi_data_cliped.tif",
                       package="raster")
 
 #set RGB plot satara and sabie rasters
