@@ -9,9 +9,9 @@ library(ggspatial)
 
 #open files
 #sabi
-map1994<-raster('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/sabi/MLP_map1.tif')
+map1994<-raster('*/sabi/MLP_map1.tif')
 #satara
-map2018<-raster('D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/satara/SVM_map_satara1.tif')
+map2018<-raster('*/satara/SVM_map_satara1.tif')
 
 # function to prep thematic raster data for plotting
 prep_raster <- function(thema_img){
