@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 #%%
 
-rLayer = 'D:/studies/phd/WV3_Data_July2019/010039360030_01/010039360030_01_P001_MUL/sabi_data_cliped.tif'
-vLayer = 'D:/studies/phd/WV3_Data_July2019/010039360030_01/L_Sabie_subset/mapping land cover/Lcover_train_and_test.shp'
+rLayer = '*/sabi_data_cliped.tif'
+vLayer = '*/Lcover_train_and_test.shp'
 
 
 def rasterize(raster_ext, shp, attrib = 'new_C_ID'):
@@ -21,7 +21,7 @@ def rasterize(raster_ext, shp, attrib = 'new_C_ID'):
   raster_ds = gdal.Open(raster_ext) # read in the given raster
   source_ds = ogr.Open(shp) # read in the esri shapefile
   source_layer = source_ds.GetLayer()
-  source_fn = 'D:/studies/phd/WV3_Data_July2019/010039360030_01/L_Sabie_subset/mapping land cover/Lcover_train_and_test.tif' # name of resulting raster file
+  source_fn = '*/Lcover_train_and_test.tif' # name of resulting raster file
   ncol = raster_ds.RasterXSize # get number of columns for given raster
   nrow = raster_ds.RasterYSize # get number of rows fro given raster
   proj = raster_ds.GetProjectionRef() # get projection of given raster
@@ -79,7 +79,7 @@ train_img, test_img, train_lab, test_lab = train_test_split(all_data_img, all_da
 
 #prepare satara imagery for prediction
 
-satara_img = 'D:/studies/phd/WV3_Data_JULY2019/010039360040_01/010039360040_01_P001_MUL/satara_data_clipped.tif'
+satara_img = '*/satara_data_clipped.tif'
 
 satara_img1 = gdal.Open(satara_img)
 #%% image to array
