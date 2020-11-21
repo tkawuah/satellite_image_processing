@@ -19,7 +19,7 @@ gl_svm_prob = svm_probs[:,3].reshape(x_img_arr1.shape[0],x_img_arr1.shape[1])
 #%%
 x_img = gdal.Open(satara_img) #modified to satara image
 
-file_name = 'D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/SVM_gl_prob_satara.tif'
+file_name = '*/SVM_gl_prob_satara.tif'
 x_pixels = x_img.RasterXSize
 y_pixels = x_img.RasterYSize
 driver = gdal.GetDriverByName('GTiff')
