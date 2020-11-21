@@ -1,6 +1,6 @@
 library('PresenceAbsence')
 
-file_loc <- 'D:/studies/phd/MachineLearningTutorialPackage/results_maps_and_probs/satara/PresenceAbsence_prob_thresholding_satara.csv'
+file_loc <- '*/PresenceAbsence_prob_thresholding_satara.csv'
 
 knp <- read.csv(file_loc)
 
